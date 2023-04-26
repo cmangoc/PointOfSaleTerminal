@@ -2,8 +2,9 @@
 {
     public class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
+
             Product.ProductsList.Add(new Product("Bread", "Food", "wholegrain", 4.99m));
             Product.ProductsList.Add(new Product("Chips", "Food", "Potatoc chips", 5.99m));
             Product.ProductsList.Add(new Product("SweetPotato", "Food", "Fesh sweet potato", 0.99m));
@@ -18,6 +19,7 @@
             Product.ProductsList.Add(new Product("Shorts", "Sporting Goods", "For the true sportsperson", 19.98m));
 
             Product.PrintProducts();
+
         }
     }
 }

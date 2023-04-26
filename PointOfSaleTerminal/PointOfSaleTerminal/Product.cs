@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+
 using System.Security;
+
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,6 +17,8 @@ namespace PointOfSaleTerminal
         public decimal Price { get; set; }
         public static List<Product> ProductsList { get; set; } = new List<Product>();
         public Product(string Name, string Category, string Description, decimal Price)
+
+   
         {
             this.Name = Name;
             this.Category = Category;
@@ -24,6 +28,7 @@ namespace PointOfSaleTerminal
 
         public override string ToString()
         {
+
             return String.Format("{0,-15} {1,-18} {2,-30} {3,10}", $"{Name}", $"{Category}", $"{Description}", $"${Price}");
         }
         public static void PrintProducts()
@@ -34,5 +39,6 @@ namespace PointOfSaleTerminal
             }
         }
         
+
     }
 }
