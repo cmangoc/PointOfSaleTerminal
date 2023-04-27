@@ -16,6 +16,7 @@ namespace PointOfSaleTerminal
         public string Category { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
+
         public static List<Product> ProductsList { get; set; } = new List<Product>();
         public Product(string Name, string Category, string Description, decimal Price)
         {
@@ -23,6 +24,7 @@ namespace PointOfSaleTerminal
             this.Category = Category;
             this.Description = Description;
             this.Price = Price;
+           
         }
 
         public override string ToString()
@@ -47,6 +49,8 @@ namespace PointOfSaleTerminal
             }
             Console.WriteLine();
         }
+
+
         public static void OrderProduct()
         {
             Console.WriteLine($"What would you like to order? [1-{ProductsList.Count}] or [0 to display list again]");

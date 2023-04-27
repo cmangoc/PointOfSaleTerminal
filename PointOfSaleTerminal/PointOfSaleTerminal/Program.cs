@@ -19,7 +19,34 @@ namespace PointOfSaleTerminal
             Product.ProductsList.Add(new Product("Horseshoes", "Sporting Goods", "Not for Horses", 44.95m));
             Product.ProductsList.Add(new Product("Shorts", "Sporting Goods", "For the true sportsperson", 19.98m));
 
+
+            
+            Ascii.AsciiProductsList.Add(new Ascii(" \r\n                                                            \r\n               :=+**++=-::..                                \r\n          .+#@@==@+-    .==+@@*====*@@@%#*++++:             \r\n        .*%- :  -*      *   *=     #*  #+    %@@@==.        \r\n      +%:.  #   =      *.   =     .=   .     **:::-@%       \r\n    :%*:   *.  *      .=          *.         #  . *-*%:     \r\n   .%     *:  =       %   -      .-         *-  :     #-    \r\n  -%.   *--   =      =:   =      =   #      =   #      +=   \r\n .%     @@   =       =   #       =  :.         -: :     *=  \r\n %-     .+           =  :.      %   =          # -@%.    +. \r\n @       = .#*      #   #      -%   #      +   =         .@ \r\n %       =*%        @  ##      @.  *-      +  .-          %-\r\n %-                 @##-:      #  .@%.    .-  %:          =-\r\n  *                  .         : =#+=      - -@.          =-\r\n  =+                                       =*:            @:\r\n   #+.+                                                  -% \r\n    +%:                                                 .%  \r\n     .%%+                                              -@   \r\n       .+*%%====-:                                 ===%#    \r\n                :-*@@@@@@@@@%##*=-:.            .*@@@%:     \r\n                          .:---------======-------:.        ", 4.99m));
+            
+            //Ascii.AsciiProductsList.Add(new Ascii("\r\n                                                             \r\n                                                            \r\n                                                            \r\n                                                            \r\n    =@@    @      @                                         \r\n   @@  @@  @      @                                         \r\n  @+    @  @                                                \r\n  @        @@@@@  @  @@@@   @@@@                            \r\n  @        @   @  @  @   @ @   @                            \r\n  @        @   @  @  @   @  @@                              \r\n  @     @- @   @  @  @   @   *@@                            \r\n  @@    @  @   @  @  @   @ @   @%                           \r\n   @@-%@%  @   @  @  @@ @% .@  @                            \r\n     #+              @ %     *=                             \r\n                     @                                      \r\n                     @                                      \r\n                                                            \r\n                                                            \r\n                                        ", 4.99m));
+            ////Ascii.AsciiProductsList.Add(new Ascii("\r\n "));
+            ////Ascii.AsciiProductsList.Add(new Ascii("\r\n "));
+            ////Ascii.AsciiProductsList.Add(new Ascii("\r\n "));
+            ////Ascii.AsciiProductsList.Add(new Ascii("\r\n "));
+            ////Ascii.AsciiProductsList.Add(new Ascii("\r\n "));
+            ////Ascii.AsciiProductsList.Add(new Ascii("\r\n "));
+            ////Ascii.AsciiProductsList.Add(new Ascii("\r\n "));
+            ////Ascii.AsciiProductsList.Add(new Ascii("\r\n "));
+            ////Ascii.AsciiProductsList.Add(new Ascii("\r\n "));
+            ////Ascii.AsciiProductsList.Add(new Ascii("\r\n "));
+            ////Ascii.AsciiProductsList.Add(new Ascii("\r\n "));
+            ////Ascii.AsciiProductsList.Add(new Ascii("\r\n "));
+            ////Ascii.AsciiProductsList.Add(new Ascii("\r\n "));
+            ////Ascii.AsciiProductsList.Add(new Ascii("\r\n "));
+
+
+
+
             Product.PrintProducts();
+
+
+
+            Ascii.PrintAscii();
 
             bool goOn = true;
             while (goOn)
@@ -29,6 +56,11 @@ namespace PointOfSaleTerminal
             }
             decimal grandTotal = ProductsPurchased.DisplayReceipt();
             ProductsPurchased.PayReceipt(grandTotal);
+
+
+
+
+
         }
     }
 }
