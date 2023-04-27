@@ -74,7 +74,6 @@ namespace PointOfSaleTerminal
             }
             if (cardNumber.Length == 16)
             {
-                cardNumber = "****-****-****-" + cardNumber.Substring(12);
                 return cardNumber;
             }
             else
