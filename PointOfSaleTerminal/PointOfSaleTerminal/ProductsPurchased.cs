@@ -6,17 +6,65 @@ using System.Threading.Tasks;
 
 namespace PointOfSaleTerminal
 {
-    public class ProductsPurchased : Product
+    public class ProductsPurchased
     {
+        public string Name { get; set; }
+        public decimal Price { get; set; }
         public int Quantity { get; set; }
         public static List<ProductsPurchased> ShoppingCart { get; set; } = new List<ProductsPurchased>();
-        public ProductsPurchased(string Name, string Category, string Description, decimal Price, int quantity) : base(Name, Category, Description, Price)
+        public ProductsPurchased(string Name, decimal Price, int quantity)
         {
             this.Name = Name;
-            this.Category = Category;
-            this.Description = Description;
             this.Price = Price;
             Quantity = quantity;
+        }
+        public static void OrderProduct()
+        {
+            Console.WriteLine($"What would you like to order? [1-{Product.ProductsList.Count}] or [0 to display list again]");
+            int input1 = Validator.ValidateInt(); //needs to accept string/int
+            if (input1 >= 1 && input1 <= Product.ProductsList.Count)
+            {
+                input1--;
+                Console.WriteLine($"How many {Product.ProductsList[input1].Name} do you want to order?");
+                int input2 = Validator.ValidateInt();
+                int newItem = 1;
+                if (input2 >= 1)
+                {
+                    for (int i = 0; i < ShoppingCart.Count; i++)
+                    {
+                        if (ShoppingCart[i].Name == Product.ProductsList[input1].Name)
+                        {
+                            ShoppingCart[i].Price /= ShoppingCart[i].Quantity;
+                            ShoppingCart[i].Quantity += input2;
+                            ShoppingCart[i].Price *= ShoppingCart[i].Quantity;
+                            newItem--;
+                        }
+                    }
+                    if (newItem == 1)
+                    {
+                        ShoppingCart.Add(new ProductsPurchased(Product.ProductsList[input1].Name, Product.ProductsList[input1].Price * input2, input2));
+                    }
+                    Console.WriteLine($"Added {input2} {Product.ProductsList[input1].Name} for ${Product.ProductsList[input1].Price * input2}");
+                }
+                else
+                {
+                    Console.WriteLine($"Unable to add {input2} of products");
+                }
+
+            }
+            else if (input1 == 0)
+            {
+                Product.PrintProducts();
+                OrderProduct();
+            }
+            else if (input1 == 2048)
+            {
+                Admin.ActivateAdmin();
+            }
+            else
+            {
+                OrderProduct();
+            }
         }
         public static decimal DisplayReceipt()
         {
@@ -30,6 +78,7 @@ namespace PointOfSaleTerminal
             for (int i = 0; i < ShoppingCart.Count; i++)
             {
                 Console.WriteLine(ShoppingCart[i].Quantity + ":\t" + ShoppingCart[i].ToString());
+                
                 subtotal += ShoppingCart[i].Price;
             }
             Console.WriteLine(String.Format("{0,84}", "Subtotal"));
@@ -132,6 +181,11 @@ namespace PointOfSaleTerminal
         {
             string check = Validator.ValidateCheck();
             return check;
+        }
+        public override string ToString()
+        {
+
+            return String.Format("{0,-15} {1,60}", $"{Name}",  $"${Price}");
         }
     }
 }
