@@ -27,7 +27,6 @@ namespace PointOfSaleTerminal
 
         public override string ToString()
         {
-
             return String.Format("{0,-15} {1,-18} {2,-30} {3,10}", $"{Name}", $"{Category}", $"{Description}", $"${Price}");
         }
         public static void PrintProducts()

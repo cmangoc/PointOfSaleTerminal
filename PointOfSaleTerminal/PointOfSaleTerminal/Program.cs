@@ -18,17 +18,27 @@ namespace PointOfSaleTerminal
             Product.ProductsList.Add(new Product("Basketball", "Sporting Goods", "Always round guaranteed", 15.65m));
             Product.ProductsList.Add(new Product("Horseshoes", "Sporting Goods", "Not for Horses", 44.95m));
             Product.ProductsList.Add(new Product("Shorts", "Sporting Goods", "For the true sportsperson", 19.98m));
+            DailySales.FetchProductList();
 
-            Product.PrintProducts();
-
-            bool goOn = true;
-            while (goOn)
+            bool newCustomer = true;
+            while (newCustomer)
             {
-                ProductsPurchased.OrderProduct();
-                goOn = Validator.Continue();
+                Product.PrintProducts();
+
+                bool goOn = true;
+                while (goOn)
+                {
+                    ProductsPurchased.OrderProduct();
+                    goOn = Validator.Continue("Do you want to order something else");
+                }
+                decimal grandTotal = ProductsPurchased.DisplayReceipt();
+                ProductsPurchased.PayReceipt(grandTotal);
+
+                DailySales.FetchShoppingCart();
+                ProductsPurchased.ShoppingCart.Clear();
+
+                newCustomer = Validator.Continue("Start a new order");
             }
-            decimal grandTotal = ProductsPurchased.DisplayReceipt();
-            ProductsPurchased.PayReceipt(grandTotal);
         }
     }
 }
