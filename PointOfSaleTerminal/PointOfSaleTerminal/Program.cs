@@ -24,7 +24,7 @@ namespace PointOfSaleTerminal
             bool goOn = true;
             while (goOn)
             {
-                Product.OrderProduct();
+                ProductsPurchased.OrderProduct();
                 goOn = Validator.Continue();
             }
             decimal grandTotal = ProductsPurchased.DisplayReceipt();
