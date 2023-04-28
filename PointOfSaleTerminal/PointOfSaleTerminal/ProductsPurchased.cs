@@ -25,6 +25,8 @@ namespace PointOfSaleTerminal
             if (input1 >= 1 && input1 <= Product.ProductsList.Count)
             {
                 input1--;
+                Ascii.PrintAscii(input1);
+                Console.WriteLine();
                 Console.WriteLine($"How many {Product.ProductsList[input1].Name} do you want to order?");
                 int input2 = Validator.ValidateInt();
                 int newItem = 1;
