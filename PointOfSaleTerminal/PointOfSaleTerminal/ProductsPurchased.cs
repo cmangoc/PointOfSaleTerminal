@@ -188,7 +188,7 @@ namespace PointOfSaleTerminal
         public override string ToString()
         {
 
-            return String.Format("{0,-15} {1,60}", $"{Name}",  $"${Price}");
+            return String.Format("{0,-15} {1,60}", $"{Name}", $"${Price}");
         }
     }
 }

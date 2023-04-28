@@ -26,7 +26,7 @@ namespace PointOfSaleTerminal
             try
             {
                 decimal input = decimal.Parse(Console.ReadLine());
-                return Math.Round(input,2);
+                return Math.Round(input, 2);
             }
             catch (FormatException)
             {
@@ -60,7 +60,7 @@ namespace PointOfSaleTerminal
             if (input.Length == 16)
             {
                 char[] chars = input.ToCharArray();
-                foreach(char c in chars)
+                foreach (char c in chars)
                 {
                     if (char.IsNumber(c))
                     {
