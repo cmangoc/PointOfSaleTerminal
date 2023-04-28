@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,16 +22,15 @@ namespace PointOfSaleTerminal
         {
 
             Console.ForegroundColor = ConsoleColor.Green;
-
+            AsciiProductsList[input].Price = Product.ProductsList[input].Price;
             for (int i = 0; i < AsciiProductsList.Count; i++)
             {
                 if (i == input)
                     Console.WriteLine(AsciiProductsList[i].ToString());
-                
             }
-           
+
             Console.ResetColor();
-            
+
         }
 
         public override string ToString()
