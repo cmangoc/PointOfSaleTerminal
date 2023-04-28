@@ -34,9 +34,9 @@ namespace PointOfSaleTerminal
                 return ValidateInt();
             }
         }
-        public static bool Continue()
+        public static bool Continue(string prompt)
         {
-            Console.WriteLine("Do you want to order something else? (y/n)");
+            Console.WriteLine($"{prompt}? (y/n)");
             string input = Console.ReadLine().Trim().ToLower();
             if (input == "y")
             {
@@ -49,7 +49,7 @@ namespace PointOfSaleTerminal
             else
             {
                 Console.WriteLine("Invalid input, try agian.");
-                return Continue();
+                return Continue(prompt);
             }
         }
         public static string ValidateCreditCard()

@@ -39,7 +39,8 @@ namespace PointOfSaleTerminal
             }
             else if (input == "sales")
             {
-
+                DailySales.PrintProducts();
+                UseAdminCommands();
             }
             else if (input == "exit")
             {

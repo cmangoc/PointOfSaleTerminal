@@ -32,12 +32,14 @@ namespace PointOfSaleTerminal
                 int newItem = 1;
                 if (input2 >= 1)
                 {
+                    decimal priceInitial = Product.ProductsList[input1].Price * input2;
                     for (int i = 0; i < ShoppingCart.Count; i++)
                     {
                         if (ShoppingCart[i].Name == Product.ProductsList[input1].Name)
                         {
                             ShoppingCart[i].Price /= ShoppingCart[i].Quantity;
                             ShoppingCart[i].Quantity += input2;
+                            priceInitial = ShoppingCart[i].Price * input2;
                             ShoppingCart[i].Price *= ShoppingCart[i].Quantity;
                             newItem--;
                         }
@@ -46,7 +48,7 @@ namespace PointOfSaleTerminal
                     {
                         ShoppingCart.Add(new ProductsPurchased(Product.ProductsList[input1].Name, Product.ProductsList[input1].Price * input2, input2));
                     }
-                    Console.WriteLine($"Added {input2} {Product.ProductsList[input1].Name} for ${Product.ProductsList[input1].Price * input2}");
+                    Console.WriteLine($"Added {input2} {Product.ProductsList[input1].Name} for ${priceInitial}");
                 }
                 else
                 {
@@ -80,7 +82,6 @@ namespace PointOfSaleTerminal
             for (int i = 0; i < ShoppingCart.Count; i++)
             {
                 Console.WriteLine(ShoppingCart[i].Quantity + ":\t" + ShoppingCart[i].ToString());
-                
                 subtotal += ShoppingCart[i].Price;
             }
             Console.WriteLine(String.Format("{0,84}", "Subtotal"));

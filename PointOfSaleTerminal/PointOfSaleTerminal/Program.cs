@@ -18,6 +18,7 @@ namespace PointOfSaleTerminal
             Product.ProductsList.Add(new Product("Basketball", "Sporting Goods", "Always round guaranteed", 15.65m));
             Product.ProductsList.Add(new Product("Horseshoes", "Sporting Goods", "Not for Horses", 44.95m));
             Product.ProductsList.Add(new Product("Shorts", "Sporting Goods", "For the true sportsperson", 19.98m));
+            DailySales.FetchProductList();
 
             Ascii.AsciiProductsList.Add(new Ascii(" ______                    _ \r\n| ___ \\                  | |\r\n| |_/ /_ __ ___  __ _  __| |\r\n| ___ \\ '__/ _ \\/ _` |/ _` |\r\n| |_/ / | |  __/ (_| | (_| |\r\n\\____/|_|  \\___|\\__,_|\\__,_| ", 4.99m));
             Ascii.AsciiProductsList.Add(new Ascii(" _____ _     _           \r\n/  __ \\ |   (_)          \r\n| /  \\/ |__  _ _ __  ___ \r\n| |   | '_ \\| | '_ \\/ __|\r\n| \\__/\\ | | | | |_) \\__ \\\r\n \\____/_| |_|_| .__/|___/\r\n              | |        \r\n              |_|         ", 4.99m));
@@ -32,21 +33,26 @@ namespace PointOfSaleTerminal
             Ascii.AsciiProductsList.Add(new Ascii(" _   _                       _____ _                     \r\n| | | |                     /  ___| |                    \r\n| |_| | ___  _ __ ___  ___  \\ `--.| |__   ___   ___  ___ \r\n|  _  |/ _ \\| '__/ __|/ _ \\  `--. \\ '_ \\ / _ \\ / _ \\/ __|\r\n| | | | (_) | |  \\__ \\  __/ /\\__/ / | | | (_) |  __/\\__ \\\r\n\\_| |_/\\___/|_|  |___/\\___| \\____/|_| |_|\\___/ \\___||___/", 44.95m));
             Ascii.AsciiProductsList.Add(new Ascii("______           _        _   _           _ _ \r\n| ___ \\         | |      | | | |         | | |\r\n| |_/ / __ _ ___| | _____| |_| |__   __ _| | |\r\n| ___ \\/ _` / __| |/ / _ \\ __| '_ \\ / _` | | |\r\n| |_/ / (_| \\__ \\   <  __/ |_| |_) | (_| | | |\r\n\\____/ \\__,_|___/_|\\_\\___|\\__|_.__/ \\__,_|_|_| ", 19.98m));
 
-            Product.PrintProducts();
 
-            bool goOn = true;
-            while (goOn)
+            bool newCustomer = true;
+            while (newCustomer)
             {
-                ProductsPurchased.OrderProduct();
-                goOn = Validator.Continue();
+                Product.PrintProducts();
+
+                bool goOn = true;
+                while (goOn)
+                {
+                    ProductsPurchased.OrderProduct();
+                    goOn = Validator.Continue("Do you want to order something else");
+                }
+                decimal grandTotal = ProductsPurchased.DisplayReceipt();
+                ProductsPurchased.PayReceipt(grandTotal);
+
+                DailySales.FetchShoppingCart();
+                ProductsPurchased.ShoppingCart.Clear();
+
+                newCustomer = Validator.Continue("Start a new order");
             }
-            decimal grandTotal = ProductsPurchased.DisplayReceipt();
-            ProductsPurchased.PayReceipt(grandTotal);
-
-
-
-
-
         }
     }
 }
