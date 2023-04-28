@@ -21,19 +21,21 @@ namespace PointOfSaleTerminal
         public static void PrintAscii(int input)
         {
 
+            Console.ForegroundColor = ConsoleColor.Green;
 
             for (int i = 0; i < AsciiProductsList.Count; i++)
             {
                 if (i == input)
                     Console.WriteLine(AsciiProductsList[i].ToString());
-
             }
+           
+            Console.ResetColor();
 
         }
 
         public override string ToString()
         {
-            return String.Format("{0,-70} {1, 10}", $"{AsciiName}", $"${Price}");
+            return String.Format("{0,-70} {1, 40}", $"{AsciiName}", $"${Price}");
 
         }
     }
